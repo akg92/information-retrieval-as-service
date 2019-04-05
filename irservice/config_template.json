@@ -1,0 +1,9 @@
+{
+    "elastic": {
+        "url": "",
+        "authentication_method": "",
+        "password": "",
+        "username": "",
+        "certificate": ""
+    }
+}
