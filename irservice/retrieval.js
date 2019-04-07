@@ -76,7 +76,7 @@ class Retriver {
         let type = this.get_elastic_type();
         let gnerated_query = {'index':index,'type':type};
         if (primary){
-            gnerated_query['body']={'main_index':query};
+            gnerated_query['body']={"query":{"term":{'main_index':query}}};
         }
         else{
             gnerated_query['body']={'secondary_index':query};
@@ -103,17 +103,17 @@ class Retriver {
 
     async insert_document(main_index,secondary_index,file_name,user_info){
         //let client = this.get_client();
-        let temp_msg = {
-            index: this.get_elastic_index(),
-            type: this.get_elastic_type(),
-            body: {
-              'main_index':main_index,
-              'secondary_index':secondary_index,
-              'file_name':file_name,
-              'file_id':this.generate_fileid_from_name(file_name)
-            }};
+        // let temp_msg = {
+        //     index: this.get_elastic_index(),
+        //     type: this.get_elastic_type(),
+        //     body: {
+        //       'main_index':main_index,
+        //       'secondary_index':secondary_index,
+        //       'file_name':file_name,
+        //       'file_id':this.generate_fileid_from_name(file_name)
+        //     }};
 
-        //console.log(JSON.stringify(temp_msg));
+        // console.log(JSON.stringify(temp_msg));
 
         this.client.index({
             index: this.get_elastic_index(),
@@ -133,6 +133,7 @@ class Retriver {
 
         let client =  this.client;
         let elastic_query = this.generate_query(query);
+        console.log(JSON.stringify(elastic_query));
         client.search(elastic_query,(err,result)=>{
             if (err){
                 return Promise.reject(err);
@@ -169,10 +170,10 @@ exports.Retriver = Retriver;
 var test = async ()=>{
     let ret_class = await new Retriver();
     let query = "shibin";
-    let primary_index = "Hello i am shibin";
+    let primary_index = "Winter is here";
     let secondary_index = "Watch GOT. Don't miss";
     let file_name = "shibin.txt";
-    //await ret_class.insert_document(primary_index,secondary_index,file_name);
+    await ret_class.insert_document(primary_index,secondary_index,file_name);
     let result = await ret_class.search_document(query);
     console.log(result);
 };
