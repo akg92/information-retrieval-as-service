@@ -5,5 +5,10 @@
         "password": "",
         "username": "",
         "certificate": ""
+    },
+    "storage":{
+        "accessKeyId":"AKIAY2GMC73D57MBJLF5",
+        "secretAccessKey":"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"
+
     }
 }

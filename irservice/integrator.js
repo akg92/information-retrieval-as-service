@@ -29,7 +29,7 @@ const CONTENT_MAPPING = {".jpg":"image/jpeg",".png":"image/png",".pdf":"applicat
 var set_headers= (res,file_id)=>{
 
     let ext = path_module.extname(file_id);
-    let content_type ="application/octet-stream";
+    let content_type ="application/octet-stream"
     if (CONTENT_MAPPING[ext]){
         content_type = CONTENT_MAPPING[ext];
     }
@@ -42,5 +42,37 @@ module.exports.get_file_byid = async (file_id,res)=>{
     s3.download(file_id,res);
 }
 
+set_generic_header = (res,status)=>{
+    res.setHeader("Content-Type","application/json");
+    res.status(status);
+} ;
+// clean the elastic search result
+clean_the_index_result=(data)=>{
+    let data_json = data;
+    let result = [];
+    for(let i in data_json){
+        obj = data_json[i]._source;
+        result.push({"file_name":obj.file_name,"file_id":obj.file_id});
+    }
+    return JSON.stringify(result);
+}
 
+module.exports.serach= async (query,res)=>{
+    let elastic = await new indexer.Retriver();
+    //set header;
+
+    return new Promise((reseolve,reject)=>{
+        elastic.search_document(query).then(
+            (data)=>{
+                set_generic_header(res,200);
+                data = clean_the_index_result(data);
+                res.send(data);
+            },/*On error*/ ()=>{
+                  set_generic_header(res,204);
+                  res.send();  
+            }
+        );
+
+    });
+};  
 

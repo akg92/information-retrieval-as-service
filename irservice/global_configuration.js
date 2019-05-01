@@ -60,6 +60,19 @@ exports.get_storage_config= async ()=>{
     return STORAGE_CONFIG;
 };
 
+ML_CONFIG = null;
+exports.get_ml_config=async ()=>{
+    if(ML_CONFIG){
+        return ML_CONFIG;
+    }
+
+    if (MODE=='debug'){
+        let all_config = await read_config_file();
+        ML_CONFIG = all_config['ml'];
+    }
+    return ML_CONFIG;
+
+}
 
 var test = async ()=>{
     let json = await exports.get_elastic_configuration();
