@@ -1,0 +1,63 @@
+
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html>
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<script src="/static/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="/static/main.js"></script>
+<link href="/static/main.css" rel="stylesheet">
+  <head>
+    <title>Awesome Search Box</title>
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"  crossorigin="anonymous">
+  </head>
+  <!-- Coded with love by Mutiullah Samim-->
+  <body>
+
+
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Dropdown
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#" data-value="action">conv1d</a></li>
+    <li><a href="#" data-value="another action">xgboostchar</a></li>
+    <li><a href="#" data-value="something else here">charlstm</a></li>
+    <li><a href="#" data-value="separated link">bert</a></li>
+  </ul>
+</div>
+
+</div>
+  <div class="file btn btn-lg btn-primary">
+    <form action="/content" method="post">
+    <input id="image-file" type="file" />
+    <input type="submit" value="Upload To Storage"/>
+</form>
+  </div>
+
+
+
+
+
+    <div class="container h-100">
+      <div class="d-flex justify-content-center h-30">
+        <div class="searchbar">
+          <input class="search_input" id="search_box" type="text" name="" placeholder="Search...">
+          <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+        </div>
+      </div>
+      <div class="result_cls">
+      </div>
+
+    </div>
+  </body>
+</html>
