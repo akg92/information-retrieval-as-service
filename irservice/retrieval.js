@@ -74,7 +74,7 @@ class Retriver {
 
         let index = this.get_elastic_index();
         let type = this.get_elastic_type();
-        let gnerated_query = { 'index': index, 'type': type };
+        let gnerated_query = { 'index': index, 'type': type,'size':100 };
         if (primary) {
             gnerated_query['body'] = { "query": { "match": { 'main_index': query } } };
         }
@@ -184,5 +184,5 @@ var test = async () => {
 
 // main method for testing
 if (require.main == module) {
-    test();
+   // test();
 }

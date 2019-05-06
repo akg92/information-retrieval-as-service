@@ -59,7 +59,7 @@ app.get("/content/:file_id", (req, res) => {
 */
 app.get("/hello", (req, res) => {
     res.status(200);
-    res.send("")
+    res.send("Hello from us!!!")
 });
 
 

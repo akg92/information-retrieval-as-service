@@ -9,13 +9,16 @@ var populate = (data)=>{
       <small class="text-muted"></small>
     </div>
   </a>`;
-    data = data['result']
+   // data = data['result']
     for (let i in data){
         let val = data[i];
         let child = $($.parseHTML(sample));
-        child.find("h5").text(val.question);
-        child.find("small").text(val.score);
+        child.find("h5").text(val.file_name);
+        child.attr("href",'http://localhost:8080/'+val.file_id.replace("upload","content"));
         div.append(child);
+        if(i>10){
+            return;
+        }
     }
 
 }
@@ -31,8 +34,8 @@ var onenter = ()=>{
      //   resp=JSON.parse(resp);
        // populate(resp);
     //});
-    $.get('/search', {query:data}, function (data, textStatus, jqXHR) {
-    $('p').append(data.firstName);
+    $.get('http://localhost:8080/search', {query:data}, function (data, textStatus, jqXHR) {
+    populate(data);
 });
 
 
